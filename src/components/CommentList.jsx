@@ -55,22 +55,22 @@ class CommentList extends React.Component {
         })
         console.log(id)
 
-        // const url = "https://striveschool.herokuapp.com/api/comments/";
+        const url = "https://striveschool.herokuapp.com/api/comments/";
     
 
-        // const username = 'user24';
-        // const password = '48D4vaVh6Ra3DD8w';
+        const username = 'user24';
+        const password = '48D4vaVh6Ra3DD8w';
 
-        // const headers = new Headers();
+        const headers = new Headers();
 
-        // headers.append('Content-Type', 'application/json');
-        // headers.append('Authorization', 'Basic ' + btoa(username + ":" + password));
+        headers.append('Content-Type', 'application/json');
+        headers.append('Authorization', 'Basic ' + btoa(username + ":" + password));
 
-        // let response = await fetch(url + id, {
-        // method: "DELETE",
-        // headers: headers,
-        // });
-        // return response;
+        let response = await fetch(url + id, {
+        method: "DELETE",
+        headers: headers,
+        });
+        return response;
     };
 
 
