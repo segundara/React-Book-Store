@@ -49,7 +49,7 @@ class CommentList extends React.Component {
     deleteComment = async ({comment}) => {
         let id = ''
         this.state.commentss.map((a)=>{
-            if (a.comment === comment){
+            if (a._id === comment._id){
                 return id += a._id
             }
         })
@@ -85,7 +85,7 @@ class CommentList extends React.Component {
                         <Comment key={i}
                             selectedBook={comment} 
                         />
-                        <Button variant="danger" onClick={() => this.deleteComment(comment)}>Delete</Button>
+                        <Button variant="danger" onClick={() => this.deleteComment({comment})}>Delete</Button>
                         </>
                     );
                 })}
@@ -98,7 +98,7 @@ class CommentList extends React.Component {
             )}
             {!this.props.selectedBook && (
             <Alert variant="secondary" className="mt-5">
-                No book selected, please click on a book to show the comments
+                No book selected, please click on a book to show comments and to add new comment
             </Alert>
             )}
       </Container>
