@@ -91,7 +91,7 @@ class LatestRealease extends React.Component {
                 })}                
             </Row>
             <Row>
-                <Col xs={12}>
+                <Col xs={12} >
                     <CommentList selectedBook={this.state.selectedBook} />
                 </Col>
             </Row>

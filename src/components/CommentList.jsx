@@ -79,14 +79,13 @@ class CommentList extends React.Component {
         <Container>
             {this.props.selectedBook && (
                 <>
-                <h2 className="text-center mb-3">Comments and Ratings</h2>
                 {this.state.commentss.map((comment,i)=>{
                     return (    
                         <>      
                         <Comment key={i}
                             selectedBook={comment} 
                         />
-                        <Button key={i} variant="danger" onClick={() => this.deleteComment(comment)}>Delete</Button>
+                        <Button variant="danger" onClick={() => this.deleteComment(comment)}>Delete</Button>
                         </>
                     );
                 })}

@@ -71,7 +71,7 @@ class AddComment extends React.Component {
       <>
       {this.props.selectedBook && (
       <div className="mt-5 mb-5">
-        <h3>Give comments!</h3>
+        <h3>Add more comments!</h3>
         <Form onSubmit={this.submitReservation}>
           <Row>
             <Col md={6}>
@@ -81,7 +81,7 @@ class AddComment extends React.Component {
                   type="text"
                   name="elementId"
                   id="elementId"
-                  placeholder="Tap any key to show book-ID here!"
+                  placeholder="Click inside and tap any key to populate this field!"
                   value={this.state.reservation.elementId}
                   onChange={this.updateReservationField}
                 />
