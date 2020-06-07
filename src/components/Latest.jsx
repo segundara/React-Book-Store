@@ -16,7 +16,7 @@ let bookCategories = ['fantasy','history','horror','romance','scifi']
 
 class LatestRealease extends React.Component {
     state = {
-        books: books.fantasy.slice(0, 10),
+        books: books.fantasy.slice(0, 4),
         categorySelected: '',
         selectedBook: null,
     };
@@ -26,7 +26,7 @@ class LatestRealease extends React.Component {
     };
 
     handleDropdownChange = (category) => {
-        this.setState({books: books[category].slice(0,10), categorySelected: category});
+        this.setState({books: books[category].slice(0,4), categorySelected: category});
     };
 
     handleSearchQuery = (searchQuery) => {
@@ -36,16 +36,22 @@ class LatestRealease extends React.Component {
             let filteredbooks =books[category].filter((book) => 
             book.title.toLowerCase().includes(searchQuery.toLowerCase()));
 
-            this.setState({books: filteredbooks.slice(0,10)});
+            this.setState({books: filteredbooks.slice(0,4)});
         }
         else {
-            this.setState({books: books[category].slice(0,10)});
+            this.setState({books: books[category].slice(0,4)});
         }
     }
 
     render() {
         return (
             <>
+            <Row className="d-flex flex-row-reverse">
+                <Col xs={12} md={6}>
+                    <CommentList selectedBook={this.state.selectedBook} />
+                </Col>
+                <Col xs={12} md={6}>
+                <Row className="mx-0 pb-3">
             <InputGroup>
             <DropdownButton
                 id='dropdown-basic-button'
@@ -70,10 +76,10 @@ class LatestRealease extends React.Component {
                     onChange={(e) => this.handleSearchQuery(e.target.value)}
                 />
                 </InputGroup>
-            <Row className="mx-0 pb-3">
+            
                 {this.state.books.map((book) => {
                     return (
-                        <Col className="col-md-3 py-3"  key={book.asin}>
+                        <Col md={6} className="py-3"  key={book.asin}>
                             <Card style={{width: 15 + 'rem', height: 30 + 'rem'}}>
                                 <Card.Img 
                                     className="img-fluid" 
@@ -90,10 +96,7 @@ class LatestRealease extends React.Component {
                     );
                 })}                
             </Row>
-            <Row>
-                <Col xs={12} >
-                    <CommentList selectedBook={this.state.selectedBook} />
-                </Col>
+            </Col>
             </Row>
             </>
         )

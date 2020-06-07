@@ -4,7 +4,7 @@ import { Form, Row, Col, Button} from 'react-bootstrap'
 
 class AddComment extends React.Component {
   state = {
-      //select: this.props.selectedBook,
+      //selected: this.props.selectedBook,
     commentObj: {
         comment: '',
         rate: 1,
@@ -50,18 +50,16 @@ class AddComment extends React.Component {
   }
 
   updateCommentField = event => {
-    // console.log('event', event)
+    //console.log('event', event)
     let commentObj = this.state.commentObj
     let currentId = event.currentTarget.id
     console.log(currentId)
 
     if (currentId === 'elementId'){
       commentObj[currentId] = this.props.selectedBook.asin
-      console.log(this.props.selectedBook.asin)
+      //console.log(this.props.selectedBook.asin)
     }
     else commentObj[currentId] = event.currentTarget.value
-
-    //commentObj[currentId] = event.currentTarget.value
 
     this.setState({ commentObj: commentObj })
   }
@@ -71,7 +69,7 @@ class AddComment extends React.Component {
       <>
       {this.props.selectedBook && (
       <div className="mt-5 mb-5">
-        <h3>Add more comments!</h3>
+        <h5>Add more comments with the Form below!</h5>
         <Form onSubmit={this.saveComment}>
           <Row>
             <Col md={6}>
