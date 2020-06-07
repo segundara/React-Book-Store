@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, ListGroup, Alert, Badge, Col, Button } from "react-bootstrap";
+import { Container, ListGroup, Alert, Badge} from "react-bootstrap";
 
 const Comment = ({selectedBook}) => {
 

@@ -1,18 +1,18 @@
 import React from 'react'
-import { Form, Row, Col, Button, Container } from 'react-bootstrap'
+import { Form, Row, Col, Button} from 'react-bootstrap'
 
 
 class AddComment extends React.Component {
   state = {
       //select: this.props.selectedBook,
-    reservation: {
+    commentObj: {
         comment: '',
         rate: 1,
         elementId: ''
     }
   }
 
-  submitReservation = async e => {
+  saveComment = async e => {
     e.preventDefault();
 
     const url = "https://striveschool.herokuapp.com/api/comments/";
@@ -28,13 +28,13 @@ class AddComment extends React.Component {
     try {
       let response = await fetch(url, {
         method: "POST",
-        body: JSON.stringify(this.state.reservation),
+        body: JSON.stringify(this.state.commentObj),
         headers: headers,
       })
       if (response.ok) {
         alert('Comment saved!')
         this.setState({
-          reservation: {
+          commentObj: {
             comment: '',
             rate: 1,
             elementId: ''
@@ -49,21 +49,21 @@ class AddComment extends React.Component {
     }
   }
 
-  updateReservationField = event => {
+  updateCommentField = event => {
     // console.log('event', event)
-    let reservation = this.state.reservation
+    let commentObj = this.state.commentObj
     let currentId = event.currentTarget.id
     console.log(currentId)
 
     if (currentId === 'elementId'){
-      reservation[currentId] = this.props.selectedBook.asin
+      commentObj[currentId] = this.props.selectedBook.asin
       console.log(this.props.selectedBook.asin)
     }
-    else reservation[currentId] = event.currentTarget.value
+    else commentObj[currentId] = event.currentTarget.value
 
-    //reservation[currentId] = event.currentTarget.value
+    //commentObj[currentId] = event.currentTarget.value
 
-    this.setState({ reservation: reservation })
+    this.setState({ commentObj: commentObj })
   }
 
   render() {
@@ -72,7 +72,7 @@ class AddComment extends React.Component {
       {this.props.selectedBook && (
       <div className="mt-5 mb-5">
         <h3>Add more comments!</h3>
-        <Form onSubmit={this.submitReservation}>
+        <Form onSubmit={this.saveComment}>
           <Row>
             <Col md={6}>
               <Form.Group>
@@ -82,8 +82,8 @@ class AddComment extends React.Component {
                   name="elementId"
                   id="elementId"
                   placeholder="Click inside and tap any key to populate this field!"
-                  value={this.state.reservation.elementId}
-                  onChange={this.updateReservationField}
+                  value={this.state.commentObj.elementId}
+                  onChange={this.updateCommentField}
                 />
               </Form.Group>
             </Col>
@@ -95,8 +95,8 @@ class AddComment extends React.Component {
                   name="comment"
                   id="comment"
                   placeholder="Your comment"
-                  value={this.state.reservation.comment}
-                  onChange={this.updateReservationField}
+                  value={this.state.commentObj.comment}
+                  onChange={this.updateCommentField}
                 />
               </Form.Group>
             </Col>
@@ -111,8 +111,8 @@ class AddComment extends React.Component {
                   as="select"
                   name="rate"
                   id="rate"
-                  value={this.state.reservation.rate}
-                  onChange={this.updateReservationField}
+                  value={this.state.commentObj.rate}
+                  onChange={this.updateCommentField}
                 >
                   <option>1</option>
                   <option>2</option>

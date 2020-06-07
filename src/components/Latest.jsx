@@ -17,7 +17,7 @@ let bookCategories = ['fantasy','history','horror','romance','scifi']
 class LatestRealease extends React.Component {
     state = {
         books: books.fantasy.slice(0, 10),
-        categorySelected: 'fantasy',
+        categorySelected: '',
         selectedBook: null,
     };
 
