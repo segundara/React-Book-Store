@@ -4,8 +4,8 @@ import { Container, ListGroup, Alert, Badge, Col, Button } from "react-bootstrap
 //import SingleBook from './SingleBook'
 import Comment from './Comment';
 import AddComment from './AddComment';
-import { usePromiseTracker } from "react-promise-tracker";
-import { trackPromise } from 'react-promise-tracker';
+// import { usePromiseTracker } from "react-promise-tracker";
+// import { trackPromise } from 'react-promise-tracker';
 import Loader from 'react-loader-spinner';
 
 class CommentList extends React.Component {
@@ -74,7 +74,7 @@ class CommentList extends React.Component {
           const url =
             "https://striveschool.herokuapp.com/api/comments/" +
             this.props.selectedBook.asin;
-          const username = "user24";
+          const username = "user2";
           const password = "48D4vaVh6Ra3DD8w";
           const headers = new Headers();
           headers.append("Content-Type", "application/json");

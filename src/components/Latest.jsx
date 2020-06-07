@@ -51,52 +51,52 @@ class LatestRealease extends React.Component {
                     <CommentList selectedBook={this.state.selectedBook} />
                 </Col>
                 <Col xs={12} md={6}>
-                <Row className="mx-0 pb-3">
-            <InputGroup>
-            <DropdownButton
-                id='dropdown-basic-button'
-                className='mb-3'
-                title={this.state.categorySelected}
-                >
-                {bookCategories.map((category, index) => {
-                    return(
-                        <Dropdown.Item
-                            href='#/action-1'
-                            key={`cat-${index}`}
-                            onClick={() => this.handleDropdownChange(category)}
-                        >{category}
-                        </Dropdown.Item>
-                    );
-                })}    
-                </DropdownButton>
-                <FormControl
-                    placeholder='Search books by title'
-                    aria-label='search'
-                    aria-describedby='basic-addon1'
-                    onChange={(e) => this.handleSearchQuery(e.target.value)}
-                />
-                </InputGroup>
-            
-                {this.state.books.map((book) => {
-                    return (
-                        <Col md={6} className="py-3"  key={book.asin}>
-                            <Card style={{width: 15 + 'rem', height: 30 + 'rem'}}>
-                                <Card.Img 
-                                    className="img-fluid" 
-                                    variant="top" 
-                                    src={book.img} 
-                                    style={{width: 15 + 'rem', height: 15 + 'rem'}}
-                                    onClick={() => this.showBookComment(book)}
-                                    />
-                                <Card.Body >
-                                    <Card.Title className="font-weight-light">{book.title}</Card.Title>
-                                </Card.Body>
-                            </Card>  
-                        </Col>
-                    );
-                })}                
-            </Row>
-            </Col>
+                    <Row className="mx-0 pb-3">
+                        <InputGroup>
+                        <DropdownButton
+                            id='dropdown-basic-button'
+                            className='mb-3'
+                            title={this.state.categorySelected}
+                            >
+                            {bookCategories.map((category, index) => {
+                                return(
+                                    <Dropdown.Item
+                                        href='#/action-1'
+                                        key={`cat-${index}`}
+                                        onClick={() => this.handleDropdownChange(category)}
+                                    >{category}
+                                    </Dropdown.Item>
+                                );
+                            })}    
+                            </DropdownButton>
+                            <FormControl
+                                placeholder='Search books by title'
+                                aria-label='search'
+                                aria-describedby='basic-addon1'
+                                onChange={(e) => this.handleSearchQuery(e.target.value)}
+                            />
+                            </InputGroup>
+                        
+                            {this.state.books.map((book) => {
+                                return (
+                                    <Col md={6} className="py-3"  key={book.asin}>
+                                        <Card style={{width: 15 + 'rem', height: 30 + 'rem'}}>
+                                            <Card.Img 
+                                                className="img-fluid" 
+                                                variant="top" 
+                                                src={book.img} 
+                                                style={{width: 15 + 'rem', height: 15 + 'rem'}}
+                                                onClick={() => this.showBookComment(book)}
+                                                />
+                                            <Card.Body >
+                                                <Card.Title className="font-weight-light">{book.title}</Card.Title>
+                                            </Card.Body>
+                                        </Card>  
+                                    </Col>
+                                );
+                            })}                
+                    </Row>
+                </Col>
             </Row>
             </>
         )
