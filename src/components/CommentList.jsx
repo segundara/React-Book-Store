@@ -73,8 +73,8 @@ class CommentList extends React.Component {
           this.setState({ selectedBook: this.props.selectedBook });
           const url =
             "https://striveschool.herokuapp.com/api/comments/" +
-            this.props.selectedBook.asin;
-          const username = "user2";
+            this.props.selectedBook;
+          const username = "user24";
           const password = "48D4vaVh6Ra3DD8w";
           const headers = new Headers();
           headers.append("Content-Type", "application/json");
@@ -170,7 +170,7 @@ class CommentList extends React.Component {
             )}
             {!this.props.selectedBook && (
             <Alert variant="info" className="my-5">
-                No book selected, please click on a book to show comments and to add new comment
+                Please click on a book to show comments and to add new comment
             </Alert>
             )}
       </Container>

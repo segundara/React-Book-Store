@@ -86,7 +86,7 @@ class LatestRealease extends React.Component {
                                                 variant="top" 
                                                 src={book.img} 
                                                 style={{width: 15 + 'rem', height: 15 + 'rem'}}
-                                                onClick={() => this.showBookComment(book)}
+                                                onClick={() => this.showBookComment(book.asin)}
                                                 />
                                             <Card.Body >
                                                 <Card.Title className="font-weight-light">{book.title}</Card.Title>

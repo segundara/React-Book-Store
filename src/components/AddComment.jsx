@@ -1,16 +1,32 @@
 import React from 'react'
 import { Form, Row, Col, Button} from 'react-bootstrap'
+import StarRatings from 'react-star-ratings';
+import {
+  Modal,
+  InputGroup,
+  FormControl,
+} from "react-bootstrap";
+import CommentList from "./CommentList";
 
 
 class AddComment extends React.Component {
   state = {
-      //selected: this.props.selectedBook,
+      //selected: false,
     commentObj: {
         comment: '',
         rate: 1,
-        elementId: ''
+        elementId: this.props.selectedBook
     }
+    
   }
+
+  // changeRating = ( newRating, name ) => {
+  //   this.setState({
+  //     commentObj: {
+  //     rating: newRating
+  //     }
+  //   });
+  // }
 
   saveComment = async e => {
     e.preventDefault();
@@ -37,7 +53,7 @@ class AddComment extends React.Component {
           commentObj: {
             comment: '',
             rate: 1,
-            elementId: ''
+            elementId: this.props.selectedBook
           }
         })
       } else {
@@ -50,19 +66,20 @@ class AddComment extends React.Component {
   }
 
   updateCommentField = event => {
-    //console.log('event', event)
     let commentObj = this.state.commentObj
     let currentId = event.currentTarget.id
     console.log(currentId)
 
     if (currentId === 'elementId'){
-      commentObj[currentId] = this.props.selectedBook.asin
-      //console.log(this.props.selectedBook.asin)
+      commentObj[currentId] = this.props.selectedBook
     }
     else commentObj[currentId] = event.currentTarget.value
 
+    //commentObj[currentId] = event.currentTarget.value
+
     this.setState({ commentObj: commentObj })
   }
+
 
   render() {
     return (
@@ -72,14 +89,14 @@ class AddComment extends React.Component {
         <h5>Add more comments with the Form below!</h5>
         <Form onSubmit={this.saveComment}>
           <Row>
-            <Col md={6}>
+            <Col md={0}>
               <Form.Group>
-                <Form.Label htmlFor="elementId">Book Id</Form.Label>
+                {/* <Form.Label htmlFor="elementId">Book Id</Form.Label> */}
                 <Form.Control
-                  type="text"
+                  type="hidden"
                   name="elementId"
                   id="elementId"
-                  placeholder="Click inside and tap any key to populate this field!"
+                  placeholder=""
                   value={this.state.commentObj.elementId}
                   onChange={this.updateCommentField}
                 />
@@ -102,6 +119,19 @@ class AddComment extends React.Component {
           <Row>
             <Col md={5}>
               <Form.Group>
+              {/* <Form.Label htmlFor="rate">
+                  Rate
+              </Form.Label>
+              <StarRatings
+                rating={this.state.commentObj.rating}
+                starRatedColor="blue"
+                changeRating={this.changeRating}
+                numberOfStars={5}
+                name='rate'
+                id="rate"
+                value={this.state.commentObj.rating || ''}
+                onClick={this.handleRadioChange}
+              /> */}
                 <Form.Label htmlFor="rate">
                   Rate
               </Form.Label>
