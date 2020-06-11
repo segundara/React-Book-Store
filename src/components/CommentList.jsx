@@ -60,7 +60,7 @@ class CommentList extends React.Component {
                 );
             })}
             <Row>
-                <Col xs={12}>
+                <Col xs={12} >
                     <AddComment selectedBook={this.props.selectedBook}/>
                 </Col>
             </Row>
@@ -68,9 +68,9 @@ class CommentList extends React.Component {
         )
     }
 
-    componentDidUpdate = async () => {
-        if (this.props.selectedBook !== this.state.selectedBook) {
-          this.setState({ selectedBook: this.props.selectedBook });
+    
+    componentDidMount = async () => {
+        console.log(this.props.selectedBook)
           const url =
             "https://striveschool.herokuapp.com/api/comments/" +
             this.props.selectedBook;
@@ -106,8 +106,8 @@ class CommentList extends React.Component {
               });
           }
         })
-        }
       };
+
     
     deleteComment = async ({comment}) => {
         let id = ''
@@ -168,11 +168,11 @@ class CommentList extends React.Component {
                 )}
                 </>
             )}
-            {!this.props.selectedBook && (
+            {/* {!this.props.selectedBook && (
             <Alert variant="info" className="my-5">
                 Please click on a book to show comments and to add new comment
             </Alert>
-            )}
+            )} */}
       </Container>
     )
     }

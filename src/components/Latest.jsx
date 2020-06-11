@@ -1,8 +1,7 @@
 import React from 'react';
 import {Card, Row, Col, Dropdown, DropdownButton, FormControl, InputGroup} from 'react-bootstrap';
 import CommentList from './CommentList';
-// import Comment from './Comment';
-// import AddComment from './AddComment';
+import { Link } from 'react-router-dom';
 
 let books = {
     fantasy: require('../data/fantasy.json'),
@@ -16,8 +15,8 @@ let bookCategories = ['fantasy','history','horror','romance','scifi']
 
 class LatestRealease extends React.Component {
     state = {
-        books: books.fantasy.slice(0, 4),
-        categorySelected: '',
+        books: books.fantasy.slice(0, 8),
+        categorySelected: 'fantasy',
         selectedBook: null,
     };
 
@@ -26,7 +25,7 @@ class LatestRealease extends React.Component {
     };
 
     handleDropdownChange = (category) => {
-        this.setState({books: books[category].slice(0,4), categorySelected: category});
+        this.setState({books: books[category].slice(0,8), categorySelected: category});
     };
 
     handleSearchQuery = (searchQuery) => {
@@ -36,21 +35,18 @@ class LatestRealease extends React.Component {
             let filteredbooks =books[category].filter((book) => 
             book.title.toLowerCase().includes(searchQuery.toLowerCase()));
 
-            this.setState({books: filteredbooks.slice(0,4)});
+            this.setState({books: filteredbooks.slice(0,8)});
         }
         else {
-            this.setState({books: books[category].slice(0,4)});
+            this.setState({books: books[category].slice(0,8)});
         }
     }
 
     render() {
+        //let category = this.state.categorySelected;
+        //console.log(books.history.filter((book)=>book.asin.includes('0316438960')))
         return (
             <>
-            <Row className="d-flex flex-row-reverse">
-                <Col xs={12} md={6}>
-                    <CommentList selectedBook={this.state.selectedBook} />
-                </Col>
-                <Col xs={12} md={6}>
                     <Row className="mx-0 pb-3">
                         <InputGroup>
                         <DropdownButton
@@ -79,25 +75,23 @@ class LatestRealease extends React.Component {
                         
                             {this.state.books.map((book) => {
                                 return (
-                                    <Col md={6} className="py-3"  key={book.asin}>
-                                        <Card style={{width: 15 + 'rem', height: 30 + 'rem'}}>
+                                    <Col xs={12} md={3} className="py-3"  key={book.asin}>
+                                        <Card style={{width: 15 + 'rem', height: 15 + 'rem'}}>
+                                            <Link to={'/details/' + book.asin}>
                                             <Card.Img 
                                                 className="img-fluid" 
                                                 variant="top" 
                                                 src={book.img} 
                                                 style={{width: 15 + 'rem', height: 15 + 'rem'}}
-                                                onClick={() => this.showBookComment(book.asin)}
+                                                // onClick={() => this.showBookComment(book.asin)}
                                                 />
-                                            <Card.Body >
-                                                <Card.Title className="font-weight-light">{book.title}</Card.Title>
-                                            </Card.Body>
+                                            </Link>
                                         </Card>  
                                     </Col>
                                 );
                             })}                
                     </Row>
-                </Col>
-            </Row>
+                
             </>
         )
     }

@@ -1,16 +1,27 @@
 import React from 'react';
 import {Navbar, Nav} from 'react-bootstrap';
+import { Link, withRouter } from 'react-router-dom';
 
 class NavBar extends React.Component {
     render() {
         return (
             <div className="fixed-top">
             <Navbar collapseOnSelect expand="lg" variant="dark" style={{backgroundColor: '#343a40', border: 2 + 'px solid #6351ce'}}>
-                <Navbar.Brand href="#home">Strive BookStore</Navbar.Brand>
+                <Link to='/'>
+                    <Navbar.Brand href="#home">Strive BookStore</Navbar.Brand>
+                </Link>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="mr-auto">
-                        <Nav.Link href="#">Home</Nav.Link>
+                        <Link to="/"
+                            className={
+                                this.props.location.pathname === '/'
+                                ? "nav-link active"
+                                : "nav-link"
+                            }
+                            >
+                            Home
+                        </Link>
                         <Nav.Link href="#">About</Nav.Link>
                         <Nav.Link href="#">Brouse</Nav.Link>
                     </Nav>
@@ -27,4 +38,4 @@ class NavBar extends React.Component {
     }
 }
 
-export default NavBar;
+export default withRouter(NavBar);

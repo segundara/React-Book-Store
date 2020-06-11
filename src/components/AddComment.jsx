@@ -20,13 +20,6 @@ class AddComment extends React.Component {
     
   }
 
-  // changeRating = ( newRating, name ) => {
-  //   this.setState({
-  //     commentObj: {
-  //     rating: newRating
-  //     }
-  //   });
-  // }
 
   saveComment = async e => {
     e.preventDefault();
@@ -115,23 +108,10 @@ class AddComment extends React.Component {
                 />
               </Form.Group>
             </Col>
-          </Row>
-          <Row>
+          {/* </Row>
+          <Row> */}
             <Col md={5}>
               <Form.Group>
-              {/* <Form.Label htmlFor="rate">
-                  Rate
-              </Form.Label>
-              <StarRatings
-                rating={this.state.commentObj.rating}
-                starRatedColor="blue"
-                changeRating={this.changeRating}
-                numberOfStars={5}
-                name='rate'
-                id="rate"
-                value={this.state.commentObj.rating || ''}
-                onClick={this.handleRadioChange}
-              /> */}
                 <Form.Label htmlFor="rate">
                   Rate
               </Form.Label>
